@@ -77,7 +77,7 @@ var _hhToastTimer = null;
         }
         (function() {
           var texts = [
-            'HuấnHà App — công cụ tối ưu game hàng đầu Việt Nam.',
+            'AimHead App — công cụ tối ưu game hàng đầu Việt Nam.',
             'Hơn 1.200+ game thủ tin tưởng và sử dụng mỗi ngày.',
             'Tăng FPS · Giảm lag · Aimlock chính xác · Headshot tự động.',
             'Bảo mật cao · Không virus · Không bị ban tài khoản game.',
@@ -130,18 +130,18 @@ var _hhToastTimer = null;
     try {
       firebase.initializeApp(firebaseConfig);
       db = firebase.database();
-      console.log('[HuấnHà] Firebase DB ✅ (waiting for auth...)');
+      console.log('[Tlong8m5] Firebase DB ✅ (waiting for auth...)');
       firebase.auth().onAuthStateChanged(function(user) {
         if (user && !_fbAuthReady) {
           _fbAuthReady = true;
           firebaseUID = user.uid;
           firebaseReady = true;
-          console.log('[HuấnHà] Auth ✅ uid=' + firebaseUID);
+          console.log('[Tlong8m5] Auth ✅ uid=' + firebaseUID);
           if (_domReady) _onFirebaseAuthReady();
         }
       });
       firebase.auth().signInAnonymously().catch(function(e) {
-        console.warn('[HuấnHà] Anonymous auth failed, fallback without auth', e);
+        console.warn('[Tlong8m5] Anonymous auth failed, fallback without auth', e);
         if (!_fbAuthReady) {
           _fbAuthReady = true;
           firebaseReady = true;
@@ -150,14 +150,14 @@ var _hhToastTimer = null;
       });
       setTimeout(function() {
         if (!_fbAuthReady) {
-          console.warn('[HuấnHà] Firebase auth timeout — switching to Demo mode');
+          console.warn('[Tlong8m5] Firebase auth timeout — switching to Demo mode');
           _fbAuthReady = true;
           firebaseReady = false;
           if (_domReady) _onFirebaseAuthReady();
         }
       }, 6000);
     } catch (e) {
-      console.warn('[HuấnHà] Firebase offline, Demo mode.', e);
+      console.warn('[Tlong8m5] Firebase offline, Demo mode.', e);
     }
     function getDeviceId() {
       let id = localStorage.getItem('hh_device_id');
@@ -469,7 +469,7 @@ var _hhToastTimer = null;
       const kiAv = document.getElementById('kiAvatarEl');
       if (av && (av.startsWith('http') || av.startsWith('data:'))) kiAv.innerHTML = `<img src="${esc(av)}">`;
       else kiAv.textContent = av || '🎮';
-      document.getElementById('kiHeroNick').textContent = userProfile.nick || 'HuấnHà App Key';
+      document.getElementById('kiHeroNick').textContent = userProfile.nick || 'Tlong8m5 App Key';
       if (d) {
         document.getElementById('ki-status-pill').className = 'ki-status-pill active';
         document.getElementById('ki-status-pill-text').textContent = 'Đã kích hoạt';
@@ -787,7 +787,7 @@ var _hhToastTimer = null;
           if (d.link) document.getElementById('freeKeyLinkBtn').href = d.link;
         }
       }, err => {
-        console.warn('[HuấnHà] loadFreeKeyConfig error:', err.code || err.message || err);
+        console.warn('[Tlong8m5] loadFreeKeyConfig error:', err.code || err.message || err);
       });
     }
     function copyFreeKey() {
@@ -904,7 +904,7 @@ var _hhToastTimer = null;
         }
       }, err => {
         clearTimeout(_ic1Timer);
-        console.warn('[HuấnHà] initChat listener error:', err.code || err.message || err);
+        console.warn('[Tlong8m5] initChat listener error:', err.code || err.message || err);
         if (!allMessages.length) loadDemoChat();
       });
       const presRef = db.ref('presence/' + DEVICE_ID);
@@ -920,11 +920,11 @@ var _hhToastTimer = null;
     }
     function loadDemoChat() {
       demoChatMessages = [
-        { id: 'd1', nick: 'HuấnHà', avatar: '👑', keyType: 'premium', text: 'Chào mừng anh em! App v2.5 đã ra mắt 🎉 Fix hoàn toàn lỗi chat không hiển thị!', ts: Date.now() - 300000, rating: 5, device: 'ADMIN-001' },
+        { id: 'd1', nick: 'Tlong8m5', avatar: '👑', keyType: 'premium', text: 'Chào mừng anh em! App v2.5 đã ra mắt 🎉 Fix hoàn toàn lỗi chat không hiển thị!', ts: Date.now() - 300000, rating: 5, device: 'ADMIN-001' },
         { id: 'd2', nick: 'DragonX99', avatar: '🐉', keyType: 'vip', text: 'ESP mượt lắm anh ơi! Ngon hơn tool cũ nhiều 💯 VIP quá đáng tiền!', ts: Date.now() - 240000, rating: 5, device: 'DEV-ABC1' },
         { id: 'd3', nick: 'SkyPlayer', avatar: '🦅', keyType: 'standard', text: 'Game Booster ngon thật, ping giảm từ 80ms còn 20ms rồi!', ts: Date.now() - 180000, rating: 4, device: 'DEV-DEF2' },
         { id: 'd4', nick: 'PhantomVN', avatar: '😈', keyType: 'free', text: 'Key free lấy ở đâu vậy mọi người? Mình mới vô', ts: Date.now() - 120000, rating: 3, device: 'DEV-GHI3' },
-        { id: 'd5', nick: 'HuấnHà', avatar: '👑', keyType: 'premium', text: '@PhantomVN lấy key free ở tab Home nhé! Nhớ follow kênh để nhận key VIP free 🎁', ts: Date.now() - 90000, rating: 5, device: 'ADMIN-001', replyTo: { nick: 'PhantomVN', text: 'Key free lấy ở đâu vậy mọi người?' } },
+        { id: 'd5', nick: 'Tlong8m5', avatar: '👑', keyType: 'premium', text: '@PhantomVN lấy key free ở tab Home nhé! Nhớ follow kênh để nhận key VIP free 🎁', ts: Date.now() - 90000, rating: 5, device: 'ADMIN-001', replyTo: { nick: 'PhantomVN', text: 'Key free lấy ở đâu vậy mọi người?' } },
         { id: 'd6', nick: 'ZeroGravity', avatar: '🌀', keyType: 'vip', text: 'App ổn định, không bị ban sau 2 tuần dùng liên tục 😍 VIP đáng lắm anh em ơi!', ts: Date.now() - 60000, rating: 5, device: 'DEV-JKL4' },
         { id: 'd7', nick: 'NightWolf', avatar: '🐺', keyType: 'standard', text: 'Aim assist pro lắm, tỉ lệ kill tăng từ 1.2 lên 3.8 KD chỉ sau 1 tuần', ts: Date.now() - 30000, rating: 4, device: 'DEV-MNO5' },
         { id: 'd8', nick: 'CyberKing', avatar: '🤖', keyType: 'vip', text: 'Network Optimizer giảm lag đỉnh! Trận cuối mình 0 lag dù mạng 3G 🔥', ts: Date.now() - 10000, rating: 5, device: 'DEV-PQR6' },
@@ -1536,7 +1536,7 @@ var _hhToastTimer = null;
       renderActivityFeed(items.slice(0, 10));
     }
     var _feedPool = [
-      { nick: 'HuấnHà',       keyType: 'premium', avatar: '👑', type: 'online'   },
+      { nick: 'Tlong8m5',       keyType: 'premium', avatar: '👑', type: 'online'   },
       { nick: 'DragonX99',    keyType: 'premium', avatar: '🐉', type: 'online'   },
       { nick: 'NightWolf',    keyType: 'vip',     avatar: '🐺', type: 'online'   },
       { nick: 'CyberKing',    keyType: 'vip',     avatar: '🤖', type: 'comment'  },
@@ -1647,7 +1647,7 @@ var _hhToastTimer = null;
           renderNotifList(localNotifs);
         }
       }, err => {
-        console.warn('[HuấnHà] watchNotifications error:', err.code || err.message || err);
+        console.warn('[Tlong8m5] watchNotifications error:', err.code || err.message || err);
       });
     }
     function showNotifBadge(count) {
@@ -1899,7 +1899,7 @@ var _hhToastTimer = null;
       const _fbTimer = setTimeout(() => {
         if (!loadState.initialDone) {
           loadState.initialDone = true;
-          console.warn('[HuấnHà] Firebase chat: không phản hồi sau 5s — giữ nguyên demo/cache');
+          console.warn('[Tlong8m5] Firebase chat: không phản hồi sau 5s — giữ nguyên demo/cache');
         }
       }, 5000);
       const chatRef = db.ref('chat/messages').limitToLast(60);
@@ -1919,7 +1919,7 @@ var _hhToastTimer = null;
       }).catch(err => {
         clearTimeout(_fbTimer);
         loadState.initialDone = true;
-        console.warn('[HuấnHà] Chat read blocked/failed:', err.code || err.message || err);
+        console.warn('[Tlong8m5] Chat read blocked/failed:', err.code || err.message || err);
       });
       db.ref('chat/messages').limitToLast(1).on('child_added', snap => {
         if (!loadState.initialDone) return; 
@@ -1945,7 +1945,7 @@ var _hhToastTimer = null;
         }
         calcAndRenderOverall(allMessages);
       }, err => {
-        console.warn('[HuấnHà] child_added error:', err.code || err.message || err);
+        console.warn('[Tlong8m5] child_added error:', err.code || err.message || err);
       });
       try {
         const presRef = db.ref('presence/' + DEVICE_ID);
@@ -1964,16 +1964,16 @@ var _hhToastTimer = null;
         updateJerkillOnline(cnt);
         updateOnlineUserStat(cnt);
       }, err => {
-        console.warn('[HuấnHà] Presence read error:', err.code || err.message || err);
+        console.warn('[Tlong8m5] Presence read error:', err.code || err.message || err);
       });
     }
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { initJerkillStatusChecker(); }, 800);
     });
     const JK_BUY_URLS = {
-      1: 'https://t.me/huanha_dev',
-      2: 'https://t.me/huanha_dev',
-      3: 'https://t.me/huanha_dev'
+      1: 'https://t.me/Tlong8m5',
+      2: 'https://t.me/Tlong8m5',
+      3: 'https://t.me/Tlong8m5'
     };
     function jkBuyNowClick(btn, planNum) {
       const ripple = document.createElement('span');
@@ -2258,7 +2258,7 @@ var _hhToastTimer = null;
         var devId = (typeof DEVICE_ID !== 'undefined') ? DEVICE_ID :
                     (localStorage.getItem('hh_device_id') || 'UNKNOWN');
         csAddMsg('bot',
-          '👋 Xin chào! Tôi là bot hỗ trợ của <b>HuấnHà App</b>.<br>' +
+          '👋 Xin chào! Tôi là bot hỗ trợ của <b>Tlong8m5 App</b>.<br>' +
           'Mã thiết bị của bạn:<br><span class="cs-device-id">' + csEsc(devId) + '</span>');
         setTimeout(function() {
           csAddTyping();
@@ -2354,15 +2354,15 @@ var _hhToastTimer = null;
           el.innerHTML = '<div class="cs-msg-av">🤖</div><div class="cs-msg-bubble">' +
             '📞 <b>Liên hệ hỗ trợ:</b>' +
             '<div class="cs-social-btns">' +
-              '<a class="cs-social-btn fb" href="https://facebook.com/huanha.dev" target="_blank">' +
+              '<a class="cs-social-btn fb" href="https://www.facebook.com/share/1BUXhuRF76/?mibextid=wwXIfr" target="_blank">' +
                 '<svg width="14" height="14" viewBox="0 0 24 24" fill="#60a5fa"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>' +
-                ' Facebook — HuấnHà</a>' +
-              '<a class="cs-social-btn tt" href="https://tiktok.com/@huanha.dev" target="_blank">' +
+                ' Facebook — Tlong8m5</a>' +
+              '<a class="cs-social-btn tt" href="https://tiktok.com/tlong8m5" target="_blank">' +
                 '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff6b9d" stroke-width="2" stroke-linecap="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>' +
-                ' TikTok — HuấnHà</a>' +
-              '<a class="cs-social-btn zl" href="https://zalo.me/huanha_dev" target="_blank">' +
+                ' TikTok — Tlong8m5</a>' +
+              '<a class="cs-social-btn zl" href="https://zalo.me/0328509917" target="_blank">' +
                 '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60c5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>' +
-                ' Zalo — HuấnHà</a>' +
+                ' Zalo — Tlong8m5</a>' +
             '</div></div>';
           container.appendChild(el);
           container.scrollTop = container.scrollHeight;
